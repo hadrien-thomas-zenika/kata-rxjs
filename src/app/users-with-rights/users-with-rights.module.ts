@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersWithRightsListComponent } from './users-with-rights-list/users-with-rights-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,8 +10,9 @@ import { UsersWithRightsListComponent } from './users-with-rights-list/users-wit
     exports: [
         UsersWithRightsListComponent
     ],
-    imports: [
-        CommonModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ]
 })
 export class UsersWithRightsModule { }

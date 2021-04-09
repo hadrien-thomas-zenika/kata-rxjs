@@ -1,4 +1,8 @@
 <h2>Users with Rights</h2>
+<form [formGroup]="formGroup">
+  <input type="text" formControlName="search" />
+</form>
+
 <ng-container *ngIf="usersWithRights$ | async as usersWithRights">
   <table>
     <thead>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { UserWithRights } from '../user-with-rights';
 import { UsersWithRightsService } from '../users-with-rights.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-with-rights-list',
@@ -11,11 +13,32 @@ import { UsersWithRightsService } from '../users-with-rights.service';
 export class UsersWithRightsListComponent implements OnInit {
 
   private usersWithRights$: Observable<UserWithRights[]>;
+  private formGroup: FormGroup;
 
-  constructor(private usersWithRightsService: UsersWithRightsService) { }
+  constructor(
+    private usersWithRightsService: UsersWithRightsService,
+    private formBuilder: FormBuilder
+  ) {
+  }
 
   ngOnInit(): void {
-    this.usersWithRights$ = this.usersWithRightsService.getUsersWithRights4();
+    this.formGroup = this.formBuilder.group({
+      search: ['']
+    });
+
+    this.usersWithRights$ = combineLatest([
+      this.usersWithRightsService.getUsersWithRights4(),
+      this.formGroup.controls.search.valueChanges.pipe(startWith(''))
+    ])
+    .pipe(
+      map(([usersWithRights, search]: [UserWithRights[], any]): UserWithRights[] => {
+        return usersWithRights.filter((userWithRights: UserWithRights) => {
+          return JSON.stringify(userWithRights).indexOf(search.toString()) >= 0;
+        });
+      })
+    );
+
+
   }
 
 }
