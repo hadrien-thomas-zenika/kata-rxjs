@@ -1,0 +1,19 @@
+<h2>Rights</h2>
+<ng-container *ngIf="rights$ | async as rights">
+  <table>
+    <thead>
+    <th>id</th>
+    <th>userId</th>
+    <th>name</th>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let right of rights">
+      <tr>
+        <td>{{ right.id }}</td>
+        <td>{{ right.userId }}</td>
+        <td>{{ right.name }}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</ng-container>
