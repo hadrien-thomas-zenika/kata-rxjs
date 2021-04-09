@@ -52,7 +52,7 @@ export class RightsRepository{
   public getRightsForUser(userId: string): Observable<Right[]> {
     const userRights: Right[] = this.rights.filter((right: Right) => right.userId === userId);
     return of(userRights).pipe(
-      delay(1000)
+      delay(1000 + Math.random() * 3000)
     );
   }
 }

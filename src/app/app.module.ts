@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module';
 import { RightsModule } from './rights/rights.module';
+import { UsersWithRightsModule } from './users-with-rights/users-with-rights.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RightsModule } from './rights/rights.module';
     BrowserModule,
     AppRoutingModule,
     UsersModule,
-    RightsModule
+    RightsModule,
+    UsersWithRightsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

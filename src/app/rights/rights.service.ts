@@ -14,4 +14,8 @@ export class RightsService {
   getRights(): Observable<Right[]> {
     return this.rightsRepository.getRights();
   }
+
+  getRightsForUser(userId: string): Observable<Right[]> {
+    return this.rightsRepository.getRightsForUser(userId);
+  }
 }
