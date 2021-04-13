@@ -15,3 +15,7 @@
     </tbody>
   </table>
 </ng-container>
+<form [formGroup]="formGroup" (ngSubmit)="createUser()">
+  <input type="text" formControlName="name" />
+  <button type="submit">Créer</button>
+</form>

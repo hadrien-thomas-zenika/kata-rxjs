@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Observable } from 'rxjs';
 import { User } from '../user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users-list',
@@ -11,11 +12,27 @@ import { User } from '../user';
 export class UsersListComponent implements OnInit {
 
   users$: Observable<User[]>;
+  formGroup: FormGroup;
 
-  constructor(private userService: UsersService) { }
-
-  ngOnInit(): void {
-    this.users$ = this.userService.getUsers();
+  constructor(private userService: UsersService,
+              private formBuilder: FormBuilder) {
   }
 
+  ngOnInit(): void {
+    this.users$ = this.userService.getUsers2();
+
+    this.userService.fetchUsers();
+
+    this.formGroup = this.formBuilder.group({
+      name: ['', Validators.required]
+    });
+  }
+
+  createUser(): void {
+    if (!this.formGroup.valid) {
+      return;
+    }
+
+    this.userService.createUser(this.formGroup.controls.name.value);
+  }
 }

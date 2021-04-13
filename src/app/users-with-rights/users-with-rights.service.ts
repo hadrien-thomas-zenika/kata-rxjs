@@ -19,7 +19,7 @@ export class UsersWithRightsService {
   }
 
   getUsersWithRights(): Observable<UserWithRights[]> {
-    return this.usersService.getUsers().pipe(
+    return this.usersService.getUsers2().pipe(
       mergeMap((users: User[]) => {
         return from(users);
       }),
@@ -38,7 +38,7 @@ export class UsersWithRightsService {
   }
 
   getUsersWithRights2(): Observable<UserWithRights[]> {
-    return this.usersService.getUsers().pipe(
+    return this.usersService.getUsers2().pipe(
       switchMap((users: User[]) => {
         return from(users).pipe(
           mergeMap((user: User) => {
@@ -58,7 +58,7 @@ export class UsersWithRightsService {
   }
 
   getUsersWithRights3(): Observable<UserWithRights[]> {
-    return this.usersService.getUsers().pipe(
+    return this.usersService.getUsers2().pipe(
       mergeMap((users: User[]) => {
         return from(users);
       }),
@@ -82,7 +82,7 @@ export class UsersWithRightsService {
   }
 
   getUsersWithRights4(): Observable<UserWithRights[]> {
-    return this.usersService.getUsers().pipe(
+    return this.usersService.getUsers2().pipe(
       mergeMap((users: User[]) => {
         return from(users);
       }),
@@ -102,6 +102,31 @@ export class UsersWithRightsService {
         },
         []
       )
+    );
+  }
+
+  getUsersWithRights5(): Observable<UserWithRights[]> {
+    return this.usersService.getUsers2().pipe(
+      switchMap((users: User[]) => {
+        return from(users).pipe(
+          concatMap((user: User) => {
+            return this.rightsService.getRightsForUser(user.id).pipe(
+              map((rights: Right[]) => {
+                return {
+                  user,
+                  rights
+                };
+              })
+            );
+          }),
+          scan((usersWithRights: UserWithRights[], userWithRights: UserWithRights) => {
+              usersWithRights.push(userWithRights);
+              return usersWithRights;
+            },
+            []
+          )
+        );
+      })
     );
   }
 }

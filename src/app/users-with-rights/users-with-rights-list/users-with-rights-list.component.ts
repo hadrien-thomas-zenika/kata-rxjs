@@ -12,8 +12,8 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class UsersWithRightsListComponent implements OnInit {
 
-  private usersWithRights$: Observable<UserWithRights[]>;
-  private formGroup: FormGroup;
+  usersWithRights$: Observable<UserWithRights[]>;
+  formGroup: FormGroup;
 
   constructor(
     private usersWithRightsService: UsersWithRightsService,
@@ -27,7 +27,7 @@ export class UsersWithRightsListComponent implements OnInit {
     });
 
     this.usersWithRights$ = combineLatest([
-      this.usersWithRightsService.getUsersWithRights4(),
+      this.usersWithRightsService.getUsersWithRights5(),
       this.formGroup.controls.search.valueChanges.pipe(startWith(''))
     ])
     .pipe(
