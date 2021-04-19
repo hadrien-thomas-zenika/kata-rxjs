@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { UserWithRights } from '../user-with-rights';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,7 +8,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class UsersWithRightsListComponent implements OnInit {
 
-  usersWithRights$: Observable<UserWithRights[]>;
   formGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {

@@ -25,6 +25,23 @@ export class UsersRepository {
       id: 'user4',
       name: 'margareth'
     },
+    {
+      id: 'user5',
+      name: 'mick'
+    },
+    {
+      id: 'user6',
+      name: 'heloise'
+    },
+    {
+      id: 'user7',
+      name: 'jeanne'
+    },
+    {
+      id: 'user8',
+      name: 'david'
+    },
+
   ];
 
   constructor() {
@@ -44,9 +61,12 @@ export class UsersRepository {
   }
 
   public createUser(name: string): void {
-    this.users.push({
-      id: `id-${name}`,
-      name
-    });
+    this.users = [
+      ...this.users,
+      {
+        id: `id-${name}`,
+        name
+      }
+    ];
   }
 }
