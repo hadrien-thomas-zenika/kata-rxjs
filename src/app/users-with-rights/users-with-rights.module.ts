@@ -4,15 +4,17 @@ import { UsersWithRightsListComponent } from './users-with-rights-list/users-wit
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-
 @NgModule({
-    declarations: [UsersWithRightsListComponent],
-    exports: [
-        UsersWithRightsListComponent
-    ],
+  declarations: [
+    UsersWithRightsListComponent
+  ],
+  exports: [
+    UsersWithRightsListComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ]
 })
-export class UsersWithRightsModule { }
+export class UsersWithRightsModule {
+}

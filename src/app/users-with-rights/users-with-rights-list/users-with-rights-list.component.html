@@ -1,27 +1,22 @@
 <h2>Users with Rights</h2>
-<form [formGroup]="formGroup">
-  <input type="text" formControlName="search" />
-</form>
+<table>
+  <thead>
+  <th>userName</th>
+  <th>rights</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>A nom d'utilisateur</td>
+    <td>
+      <ul>
+        <li>Un nom de droit</li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-<ng-container *ngIf="usersWithRights$ | async as usersWithRights">
-  <table>
-    <thead>
-    <th>userName</th>
-    <th>rights</th>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let userWithRights of usersWithRights">
-      <tr>
-        <td>{{ userWithRights.user.name }}</td>
-        <td>
-          <ul>
-            <ng-container *ngFor="let userRight of userWithRights.rights">
-              <li>{{ userRight.name }}</li>
-            </ng-container>
-          </ul>
-        </td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
-</ng-container>
+<h3>Utilisateur à chercher</h3>
+<form [formGroup]="formGroup">
+  <input type="text" formControlName="search" placeholder="search a user"/>
+</form>

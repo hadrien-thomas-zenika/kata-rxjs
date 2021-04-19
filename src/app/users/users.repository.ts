@@ -42,4 +42,11 @@ export class UsersRepository {
       delay(1000 + Math.random() * 3000)
     );
   }
+
+  public createUser(name: string): void {
+    this.users.push({
+      id: `id-${name}`,
+      name
+    });
+  }
 }

@@ -1,21 +1,19 @@
 <h2>Users</h2>
-<ng-container *ngIf="users$ | async as users">
-  <table>
-    <thead>
-    <th>id</th>
-    <th>name</th>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let user of users">
-      <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.name }}</td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
-</ng-container>
+<table>
+  <thead>
+  <th>id</th>
+  <th>name</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Un id de user</td>
+    <td>Un nom de user</td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Utilisateur à créer</h3>
 <form [formGroup]="formGroup" (ngSubmit)="createUser()">
-  <input type="text" formControlName="name" />
+  <input type="text" id="name" formControlName="name"/>
   <button type="submit">Créer</button>
 </form>

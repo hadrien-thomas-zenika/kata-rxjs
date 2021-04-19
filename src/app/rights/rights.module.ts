@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RightsListComponent } from './rights-list/rights-list.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule
@@ -15,4 +14,5 @@ import { RightsListComponent } from './rights-list/rights-list.component';
     RightsListComponent
   ],
 })
-export class RightsModule { }
+export class RightsModule {
+}
